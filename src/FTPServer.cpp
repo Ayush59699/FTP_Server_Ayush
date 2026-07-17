@@ -64,19 +64,23 @@ void FTPServer::acceptClients()
 
     std::cout << "Waiting for a client.....\n";
 
-    int clientSocket = accept(serverSocket_,
-                              reinterpret_cast<sockaddr *>(&clientAddr),
-                              &clientLen);
-
-    if (clientSocket == -1)
+    while (true)
     {
-        std::cerr << "Accept failed" << strerror(errno) << '\n';
-        return;
-    }
-    std::cout << "Client Connected!!..\n";
 
-    handleClient(clientSocket);
-    close(clientSocket);
+        int clientSocket = accept(serverSocket_,
+                                  reinterpret_cast<sockaddr *>(&clientAddr),
+                                  &clientLen);
+
+        if (clientSocket == -1)
+        {
+            std::cerr << "Accept failed" << strerror(errno) << '\n';
+            return;
+        }
+        std::cout << "Client Connected!!..\n";
+
+        handleClient(clientSocket);
+        close(clientSocket);
+    }
 }
 
 void FTPServer::handleClient(int clientSocket)

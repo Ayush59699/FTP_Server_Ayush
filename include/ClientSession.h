@@ -1,7 +1,9 @@
 #pragma once
-
 #include <string>
 #include <filesystem>
+
+#include "CommandParser.h"
+#include "FileManager.h"
 
 class ClientSession
 {
@@ -9,9 +11,11 @@ public:
     explicit ClientSession(int clientSocket);
     ~ClientSession() = default;
     void start();
+    CommandParser parser_;
 
 private:
-    void sendWelcomeMessage();
+    void
+    sendWelcomeMessage();
     void receiveCommands();
     bool processCommand(const std::string &command);
     void sendResponse(const std::string &reponse);
@@ -24,6 +28,9 @@ private:
     bool handlePWD();
     bool handleCWD(const std::string &argument);
     bool handleLIST();
+    bool handleMKD(const std::string &argument);
+    bool handleRMD(const std::string &argument);
+    bool handleDELE(const std::string &argument);
 
 private:
     int clientSocket_;
@@ -31,4 +38,5 @@ private:
     std::string username_;
     std::filesystem::path rootDirectory_;
     std::filesystem::path currentDirectory_;
+    FileManager filemanager_;
 };

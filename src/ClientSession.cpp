@@ -1,11 +1,13 @@
 
-#include "ClientSession.h"
 #include <array>
 #include <cerrno>
 #include <cstring>
 #include <iostream>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <algorithm>
+#include "ClientSession.h"
+#include "FileManager.h"
 
 ClientSession::ClientSession(int clientSocket)
     : clientSocket_(clientSocket),
@@ -13,7 +15,8 @@ ClientSession::ClientSession(int clientSocket)
       rootDirectory_(
           std::filesystem::canonical(
               std::filesystem::current_path().parent_path() / "ftp_root")),
-      currentDirectory_(rootDirectory_)
+      currentDirectory_(rootDirectory_),
+      filemanager_(rootDirectory_)
 {
 }
 
@@ -84,7 +87,6 @@ bool ClientSession::handlePWD()
 
     return false;
 }
-
 bool ClientSession::handleCWD(const std::string &argument)
 {
     if (!isAuthenticated_)
@@ -92,13 +94,11 @@ bool ClientSession::handleCWD(const std::string &argument)
         sendResponse("530 Please login with USER and PASS\r\n");
         return false;
     }
-
     if (argument.empty())
     {
         sendResponse("501 Missing directory name\r\n");
         return false;
     }
-
     std::filesystem::path newPath;
     if (argument == "/")
     {
@@ -106,29 +106,21 @@ bool ClientSession::handleCWD(const std::string &argument)
     }
     else
     {
-        newPath = currentDirectory_ / argument;
+        newPath = filemanager_.resolvePath(currentDirectory_, argument);
+
+        if (newPath.empty())
+        {
+            sendResponse("550 Access denied\r\n");
+            return false;
+        }
     }
-
-    newPath = std::filesystem::weakly_canonical(newPath);
-
     if (!std::filesystem::exists(newPath) ||
         !std::filesystem::is_directory(newPath))
     {
         sendResponse("550 Directory not found\r\n");
         return false;
     }
-
-    // Prevent escaping ftp_root
-    auto relative = std::filesystem::relative(newPath, rootDirectory_);
-
-    if (relative.string().compare(0, 2, "..") == 0)
-    {
-        sendResponse("550 Access denied\r\n");
-        return false;
-    }
-
     currentDirectory_ = newPath;
-
     sendResponse("250 Directory changed successfully\r\n");
     return false;
 }
@@ -166,62 +158,199 @@ bool ClientSession::handleLIST()
 
     return false;
 }
+bool ClientSession::handleRMD(const std::string &argument)
+{
+    if (!isAuthenticated_)
+    {
+        sendResponse("530 Please login with USER and PASS\r\n");
+        return false;
+    }
+
+    if (argument.empty())
+    {
+        sendResponse("501 Missing directory name\r\n");
+        return false;
+    }
+
+    std::filesystem::path directory = filemanager_.resolvePath(currentDirectory_, argument);
+
+    if (directory.empty())
+    {
+        sendResponse("550 Access denied\r\n");
+        return false;
+    }
+
+    try
+    {
+        if (!std::filesystem::exists(directory))
+        {
+            sendResponse("550 Directory not found\r\n");
+            return false;
+        }
+
+        if (!std::filesystem::is_directory(directory))
+        {
+            sendResponse("550 Not a directory\r\n");
+            return false;
+        }
+
+        if (filemanager_.removeDirectory(directory))
+        {
+            sendResponse("250 Directory removed successfully\r\n");
+        }
+        else
+        {
+            sendResponse("550 Failed to remove directory\r\n");
+        }
+    }
+    catch (const std::filesystem::filesystem_error &)
+    {
+        sendResponse("550 Failed to remove directory\r\n");
+    }
+
+    return false;
+}
+
+bool ClientSession::handleMKD(const std::string &argument)
+{
+    if (!isAuthenticated_)
+    {
+        sendResponse("530 Please login with USER and PASS\r\n");
+        return false;
+    }
+
+    if (argument.empty())
+    {
+        sendResponse("501 Missing directory name\r\n");
+        return false;
+    }
+
+    std::filesystem::path newDirectory = filemanager_.resolvePath(currentDirectory_, argument);
+
+    if (newDirectory.empty())
+    {
+        sendResponse("550 Access denied\r\n");
+        return false;
+    }
+
+    try
+    {
+        if (std::filesystem::exists(newDirectory))
+        {
+            sendResponse("550 Directory already exists\r\n");
+            return false;
+        }
+
+        if (filemanager_.createDirectory(newDirectory))
+        {
+            sendResponse("257 \"" + argument + "\" directory created\r\n");
+        }
+        else
+        {
+            sendResponse("550 Failed to create directory\r\n");
+        }
+    }
+    catch (const std::filesystem::filesystem_error &)
+    {
+        sendResponse("550 Failed to create directory\r\n");
+    }
+
+    return false;
+}
+bool ClientSession::handleDELE(const std::string &argument)
+{
+    if (!isAuthenticated_)
+    {
+        sendResponse("530 Please login with USER and PASS\r\n");
+        return false;
+    }
+
+    if (argument.empty())
+    {
+        sendResponse("501 Missing file name\r\n");
+        return false;
+    }
+
+    auto file = filemanager_.resolvePath(currentDirectory_, argument);
+
+    if (file.empty())
+    {
+        sendResponse("550 Access denied\r\n");
+        return false;
+    }
+
+    try
+    {
+        if (!std::filesystem::exists(file))
+        {
+            sendResponse("550 File not found\r\n");
+            return false;
+        }
+
+        if (!std::filesystem::is_regular_file(file))
+        {
+            sendResponse("550 Not a regular file\r\n");
+            return false;
+        }
+
+        if (filemanager_.deleteFile(file))
+        {
+            sendResponse("250 File deleted successfully\r\n");
+        }
+        else
+        {
+            sendResponse("550 Failed to delete file\r\n");
+        }
+    }
+    catch (const std::filesystem::filesystem_error &)
+    {
+        sendResponse("550 Failed to delete file\r\n");
+    }
+
+    return false;
+}
 
 bool ClientSession::processCommand(const std::string &command)
 {
     std::cout << "Received: " << command;
-    const auto pos = command.find(' ');
 
-    std::string cmd;
-    std::string arg;
+    ParsedCommand parsed = parser_.parse(command);
 
-    if (pos == std::string::npos)
-    {
-        cmd = command;
-    }
-    else
-    {
-        cmd = command.substr(0, pos);
-        arg = command.substr(pos + 1);
-    }
-    while (!cmd.empty() &&
-           (cmd.back() == '\r' || cmd.back() == '\n'))
-    {
-        cmd.pop_back();
-    }
+    if (parsed.command == "USER")
+        return handleUSER(parsed.argument);
 
-    while (!arg.empty() &&
-           (arg.back() == '\r' || arg.back() == '\n'))
-    {
-        arg.pop_back();
-    }
+    if (parsed.command == "PASS")
+        return handlePASS(parsed.argument);
 
-    if (cmd == "USER")
-        return handleUSER(arg);
-
-    if (cmd == "PASS")
-        return handlePASS(arg);
-
-    if (cmd == "PWD")
+    if (parsed.command == "PWD")
     {
         return handlePWD();
     }
-    if (cmd == "CWD")
+    if (parsed.command == "CWD")
     {
-        return handleCWD(arg);
+        return handleCWD(parsed.argument);
     }
 
-    if (cmd == "LIST")
-    {
+    if (parsed.command == "LIST")
         return handleLIST();
-    }
 
-    if (cmd == "QUIT")
+    if (parsed.command == "QUIT")
         return handleQUIT();
 
-    if (cmd == "NOOP")
-    {
+    if (parsed.command == "NOOP")
         return handleNOOP();
+
+    if (parsed.command == "MKD")
+    {
+        return handleMKD(parsed.argument);
+    }
+    if (parsed.command == "RMD")
+    {
+        return handleRMD(parsed.argument);
+    }
+    if (parsed.command == "DELE")
+    {
+        return handleDELE(parsed.argument);
     }
 
     sendResponse("502 Command not implemented\r\n");
