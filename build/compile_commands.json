@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/ayush/root/FTP_SERVER/build",
+  "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/main.cpp.o -c /home/ayush/root/FTP_SERVER/src/main.cpp",
+  "file": "/home/ayush/root/FTP_SERVER/src/main.cpp",
+  "output": "CMakeFiles/ftp_server.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/ayush/root/FTP_SERVER/build",
+  "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/FTPServer.cpp.o -c /home/ayush/root/FTP_SERVER/src/FTPServer.cpp",
+  "file": "/home/ayush/root/FTP_SERVER/src/FTPServer.cpp",
+  "output": "CMakeFiles/ftp_server.dir/src/FTPServer.cpp.o"
+},
+{
+  "directory": "/home/ayush/root/FTP_SERVER/build",
+  "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/ClientSession.cpp.o -c /home/ayush/root/FTP_SERVER/src/ClientSession.cpp",
+  "file": "/home/ayush/root/FTP_SERVER/src/ClientSession.cpp",
+  "output": "CMakeFiles/ftp_server.dir/src/ClientSession.cpp.o"
+},
+{
+  "directory": "/home/ayush/root/FTP_SERVER/build",
+  "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/CommandParser.cpp.o -c /home/ayush/root/FTP_SERVER/src/CommandParser.cpp",
+  "file": "/home/ayush/root/FTP_SERVER/src/CommandParser.cpp",
+  "output": "CMakeFiles/ftp_server.dir/src/CommandParser.cpp.o"
+},
+{
+  "directory": "/home/ayush/root/FTP_SERVER/build",
+  "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/FileManager.cpp.o -c /home/ayush/root/FTP_SERVER/src/FileManager.cpp",
+  "file": "/home/ayush/root/FTP_SERVER/src/FileManager.cpp",
+  "output": "CMakeFiles/ftp_server.dir/src/FileManager.cpp.o"
+},
+{
+  "directory": "/home/ayush/root/FTP_SERVER/build",
+  "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/Authenticator.cpp.o -c /home/ayush/root/FTP_SERVER/src/Authenticator.cpp",
+  "file": "/home/ayush/root/FTP_SERVER/src/Authenticator.cpp",
+  "output": "CMakeFiles/ftp_server.dir/src/Authenticator.cpp.o"
+}
+]
