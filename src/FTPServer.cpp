@@ -6,6 +6,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <thread>
 #include "FTPServer.h"
 #include "ClientSession.h"
 
@@ -79,15 +80,16 @@ void FTPServer::acceptClients()
         std::cout << "Client Connected!!..\n";
 
         handleClient(clientSocket);
-        close(clientSocket);
+        // ::close(clientSocket);
     }
 }
 
 void FTPServer::handleClient(int clientSocket)
 {
-
-    ClientSession session(clientSocket);
-    session.start();
+    std::thread([clientSocket]() {
+        ClientSession session(clientSocket);
+        session.start();
+    }).detach();
 }
 
 void FTPServer::start()
@@ -102,5 +104,9 @@ void FTPServer::start()
 
     acceptClients();
 
-    close(serverSocket_);
+    if (serverSocket_ != -1)
+    {
+        ::close(serverSocket_);
+        serverSocket_ = -1;
+    }
 }
