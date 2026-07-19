@@ -201,6 +201,30 @@ src/CommandParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftp_server.dir/build.make CMakeFiles/ftp_server.dir/src/CommandParser.cpp.s
 .PHONY : src/CommandParser.cpp.s
 
+src/ConfigManager.o: src/ConfigManager.cpp.o
+.PHONY : src/ConfigManager.o
+
+# target to build an object file
+src/ConfigManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftp_server.dir/build.make CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o
+.PHONY : src/ConfigManager.cpp.o
+
+src/ConfigManager.i: src/ConfigManager.cpp.i
+.PHONY : src/ConfigManager.i
+
+# target to preprocess a source file
+src/ConfigManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftp_server.dir/build.make CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.i
+.PHONY : src/ConfigManager.cpp.i
+
+src/ConfigManager.s: src/ConfigManager.cpp.s
+.PHONY : src/ConfigManager.s
+
+# target to generate assembly for a file
+src/ConfigManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftp_server.dir/build.make CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.s
+.PHONY : src/ConfigManager.cpp.s
+
 src/FTPServer.o: src/FTPServer.cpp.o
 .PHONY : src/FTPServer.o
 
@@ -249,6 +273,30 @@ src/FileManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftp_server.dir/build.make CMakeFiles/ftp_server.dir/src/FileManager.cpp.s
 .PHONY : src/FileManager.cpp.s
 
+src/Logger.o: src/Logger.cpp.o
+.PHONY : src/Logger.o
+
+# target to build an object file
+src/Logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftp_server.dir/build.make CMakeFiles/ftp_server.dir/src/Logger.cpp.o
+.PHONY : src/Logger.cpp.o
+
+src/Logger.i: src/Logger.cpp.i
+.PHONY : src/Logger.i
+
+# target to preprocess a source file
+src/Logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftp_server.dir/build.make CMakeFiles/ftp_server.dir/src/Logger.cpp.i
+.PHONY : src/Logger.cpp.i
+
+src/Logger.s: src/Logger.cpp.s
+.PHONY : src/Logger.s
+
+# target to generate assembly for a file
+src/Logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ftp_server.dir/build.make CMakeFiles/ftp_server.dir/src/Logger.cpp.s
+.PHONY : src/Logger.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -291,12 +339,18 @@ help:
 	@echo "... src/CommandParser.o"
 	@echo "... src/CommandParser.i"
 	@echo "... src/CommandParser.s"
+	@echo "... src/ConfigManager.o"
+	@echo "... src/ConfigManager.i"
+	@echo "... src/ConfigManager.s"
 	@echo "... src/FTPServer.o"
 	@echo "... src/FTPServer.i"
 	@echo "... src/FTPServer.s"
 	@echo "... src/FileManager.o"
 	@echo "... src/FileManager.i"
 	@echo "... src/FileManager.s"
+	@echo "... src/Logger.o"
+	@echo "... src/Logger.i"
+	@echo "... src/Logger.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

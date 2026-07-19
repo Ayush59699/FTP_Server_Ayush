@@ -15,15 +15,18 @@
 #include "ClientSession.h"
 #include "Authenticator.h"
 
+#include "Logger.h"
+#include "ConfigManager.h"
+
 namespace
 {
     std::filesystem::path resolveRootDirectory()
     {
         const std::array<std::filesystem::path, 4> candidates{
-            std::filesystem::current_path() / "ftp_root",
-            std::filesystem::current_path().parent_path() / "ftp_root",
-            std::filesystem::absolute("ftp_root"),
-            std::filesystem::current_path().parent_path().parent_path() / "ftp_root"};
+            std::filesystem::current_path() / ConfigManager::getInstance().getRootDir(),
+            std::filesystem::current_path().parent_path() / ConfigManager::getInstance().getRootDir(),
+            std::filesystem::absolute(ConfigManager::getInstance().getRootDir()),
+            std::filesystem::current_path().parent_path().parent_path() / ConfigManager::getInstance().getRootDir()};
 
         std::error_code ec;
         for (const auto &candidate : candidates)
@@ -35,13 +38,13 @@ namespace
             }
         }
 
-        const auto fallback = std::filesystem::absolute("ftp_root");
+        const auto fallback = std::filesystem::absolute(ConfigManager::getInstance().getRootDir());
         std::filesystem::create_directories(fallback);
         return fallback;
     }
 } // namespace
 
-ClientSession::ClientSession(int clientSocket)
+ClientSession::ClientSession(int clientSocket, const std::string &clientIp)
     : clientSocket_(clientSocket),
       isAuthenticated_(false),
       rootDirectory_(resolveRootDirectory()),
@@ -50,7 +53,8 @@ ClientSession::ClientSession(int clientSocket)
       passiveListenSocket_(-1),
       dataSocket_(-1),
       passiveMode_(false),
-      authenticator_((rootDirectory_.parent_path() / "users.txt").string())
+      authenticator_((rootDirectory_.parent_path() / "users.txt").string()),
+      clientIp_(clientIp)
 
 {
 }
@@ -82,7 +86,7 @@ bool ClientSession::handleUSER(const std::string &argument)
     username_ = argument;
     isAuthenticated_ = false;
 
-    std::cout << "Username: " << username_ << '\n';
+    LOG_INFO("Username: " + username_, clientIp_);
     sendResponse("331 Username OK, need password\r\n");
     return false;
 }
@@ -95,6 +99,7 @@ bool ClientSession::handlePASS(const std::string &argument)
     }
     if (!authenticator_.authenticate(username_, argument))
     {
+        LOG_WARN("Login incorrect for user: " + username_, clientIp_);
         sendResponse("530 Login incorrect\r\n");
         return false;
     }
@@ -102,11 +107,13 @@ bool ClientSession::handlePASS(const std::string &argument)
     isAuthenticated_ = true;
     currentDirectory_ = rootDirectory_;
 
+    LOG_INFO("Login successful for user: " + username_, clientIp_);
     sendResponse("230 Login successful\r\n");
     return false;
 }
 bool ClientSession::handleQUIT()
 {
+    LOG_INFO("Client quit", clientIp_);
     sendResponse("221 Goodbye\r\n");
     return true;
 }
@@ -214,14 +221,15 @@ bool ClientSession::handleLIST(const std::string &argument)
 
     std::filesystem::path directory;
 
-    if (argument.empty())
+    if (argument.empty() || argument[0] == '-')
     {
         directory = currentDirectory_;
     }
     else
     {
+        LOG_INFO("LIST argument = [" + argument + "]", clientIp_);
         directory = filemanager_.resolvePath(currentDirectory_, argument);
-        if (directory.empty())
+        if (directory.empty() || argument[0] == '-')
         {
             sendResponse("550 Access denied\r\n");
             return false;
@@ -233,37 +241,49 @@ bool ClientSession::handleLIST(const std::string &argument)
         sendResponse("550 Directory not found\r\n");
         return false;
     }
+    
+
+    LOG_INFO("[LIST] Entered", clientIp_);
+
+    sendResponse("150 Opening directory listing\r\n");
+    LOG_INFO("[LIST] Sent 150", clientIp_);
+
+    LOG_INFO("[LIST] Waiting for data connection...", clientIp_);
+
     if (!acceptDataConnection())
     {
+        LOG_ERROR("[LIST] accept failed", clientIp_);
         sendResponse("425 Can't open data connection\r\n");
         closeDataConnection();
         return false;
     }
-    sendResponse("150 Opening directory listing\r\n");
 
-    try
+    LOG_INFO("[LIST] Data connection accepted", clientIp_);
+
+    auto entries = filemanager_.listDirectory(directory);
+
+    LOG_INFO("[LIST] Entries: " + std::to_string(entries.size()), clientIp_);
+
+    for (const auto &entry : entries)
     {
-        auto entries = filemanager_.listDirectory(directory);
+        LOG_DEBUG("[LIST] " + entry, clientIp_);
 
-        for (const auto &entry : entries)
+        if (!sendData(entry + "\r\n"))
         {
-
-            if (!sendData(entry + "\r\n"))
-            {
-                closeDataConnection();
-                sendResponse("426 Connection closed; transfer aborted\r\n");
-                return false;
-            }
+            LOG_ERROR("[LIST] sendData failed", clientIp_);
+            closeDataConnection();
+            sendResponse("426 Transfer aborted\r\n");
+            return false;
         }
     }
-    catch (const std::filesystem::filesystem_error &)
-    {
-        closeDataConnection();
-        sendResponse("550 Failed to list directory\r\n");
-        return false;
-    }
+
+    LOG_INFO("[LIST] Closing connection", clientIp_);
+
     closeDataConnection();
+
     sendResponse("226 Transfer complete\r\n");
+
+    LOG_INFO("[LIST] Done", clientIp_);
 
     return false;
 }
@@ -481,11 +501,21 @@ bool ClientSession::handlePASV()
     sockaddr_in addr{};
     addr.sin_family = AF_INET;
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    addr.sin_port = htons(0); // Let OS choose a free port
+    
+    bool bound = false;
+    int pStart = ConfigManager::getInstance().getPassiveStart();
+    int pEnd = ConfigManager::getInstance().getPassiveEnd();
+    for (int port = pStart; port <= pEnd; ++port) {
+        addr.sin_port = htons(port);
+        if (bind(passiveListenSocket_,
+                 reinterpret_cast<sockaddr *>(&addr),
+                 sizeof(addr)) != -1) {
+            bound = true;
+            break;
+        }
+    }
 
-    if (bind(passiveListenSocket_,
-             reinterpret_cast<sockaddr *>(&addr),
-             sizeof(addr)) == -1)
+    if (!bound)
     {
         close(passiveListenSocket_);
         passiveListenSocket_ = -1;
@@ -524,8 +554,12 @@ bool ClientSession::handlePASV()
 
     passiveMode_ = true;
 
+    // Use server IP from config. Convert dots to commas
+    std::string ip = ConfigManager::getInstance().getServerIp();
+    std::replace(ip.begin(), ip.end(), '.', ',');
+
     std::string response =
-        "227 Entering Passive Mode (127,0,0,1," +
+        "227 Entering Passive Mode (" + ip + "," +
         std::to_string(p1) + "," +
         std::to_string(p2) + ")\r\n";
 
@@ -710,22 +744,180 @@ bool ClientSession:: handleRETR(const std::string & argument){
 
     sendResponse("226 File download successful\r\n");
 
-    std::cout << "Downloaded: "
-              << filePath
-              << std::endl;
+    LOG_INFO("Downloaded: " + filePath.string(), clientIp_);
 
     return false;
 }
 
 
+bool ClientSession::handleTYPE(const std::string &argument)
+{
+    if (!isAuthenticated_)
+    {
+        sendResponse("530 Please login with USER and PASS\r\n");
+        return false;
+    }
+    
+    if (argument == "I" || argument == "A")
+    {
+        sendResponse("200 Type set to " + argument + "\r\n");
+    }
+    else
+    {
+        sendResponse("504 Command not implemented for that parameter\r\n");
+    }
+    return false;
+}
 
+bool ClientSession::handleSYST()
+{
+    sendResponse("215 UNIX Type: L8\r\n");
+    return false;
+}
 
+bool ClientSession::handleRNFR(const std::string &argument)
+{
+    if (!isAuthenticated_)
+    {
+        sendResponse("530 Please login with USER and PASS\r\n");
+        return false;
+    }
+    if (argument.empty())
+    {
+        sendResponse("501 Missing file name\r\n");
+        return false;
+    }
 
+    auto path = filemanager_.resolvePath(currentDirectory_, argument);
+    if (path.empty() || !std::filesystem::exists(path))
+    {
+        LOG_WARN("RNFR failed: path empty or does not exist: " + argument, clientIp_);
+        sendResponse("550 File not found\r\n");
+        return false;
+    }
 
+    renameSource_ = path;
+    LOG_INFO("RNFR success: stored source " + renameSource_.string(), clientIp_);
+    sendResponse("350 Requested file action pending further information\r\n");
+    return false;
+}
+
+bool ClientSession::handleRNTO(const std::string &argument)
+{
+    if (!isAuthenticated_)
+    {
+        sendResponse("530 Please login with USER and PASS\r\n");
+        return false;
+    }
+    if (renameSource_.empty())
+    {
+        sendResponse("503 Bad sequence of commands\r\n");
+        return false;
+    }
+    if (argument.empty())
+    {
+        sendResponse("501 Missing destination name\r\n");
+        return false;
+    }
+
+    auto destPath = filemanager_.resolvePath(currentDirectory_, argument);
+    if (destPath.empty())
+    {
+        sendResponse("550 Access denied\r\n");
+        return false;
+    }
+
+    try
+    {
+        std::filesystem::rename(renameSource_, destPath);
+        LOG_INFO("RNTO success: renamed " + renameSource_.string() + " to " + destPath.string(), clientIp_);
+        renameSource_.clear();
+        sendResponse("250 Rename successful\r\n");
+    }
+    catch (const std::exception &e)
+    {
+        LOG_ERROR("RNTO exception: " + std::string(e.what()), clientIp_);
+        sendResponse("550 Rename failed\r\n");
+    }
+
+    return false;
+}
+
+bool ClientSession::handleSIZE(const std::string &argument)
+{
+    if (!isAuthenticated_)
+    {
+        sendResponse("530 Please login with USER and PASS\r\n");
+        return false;
+    }
+    if (argument.empty())
+    {
+        sendResponse("501 Missing file name\r\n");
+        return false;
+    }
+
+    auto path = filemanager_.resolvePath(currentDirectory_, argument);
+    if (path.empty() || !std::filesystem::exists(path) || !std::filesystem::is_regular_file(path))
+    {
+        sendResponse("550 File not found or not a regular file\r\n");
+        return false;
+    }
+
+    try
+    {
+        auto size = std::filesystem::file_size(path);
+        sendResponse("213 " + std::to_string(size) + "\r\n");
+    }
+    catch (const std::exception &e)
+    {
+        sendResponse("550 Failed to get file size\r\n");
+    }
+
+    return false;
+}
+
+bool ClientSession::handleMDTM(const std::string &argument)
+{
+    if (!isAuthenticated_)
+    {
+        sendResponse("530 Please login with USER and PASS\r\n");
+        return false;
+    }
+    if (argument.empty())
+    {
+        sendResponse("501 Missing file name\r\n");
+        return false;
+    }
+
+    auto path = filemanager_.resolvePath(currentDirectory_, argument);
+    if (path.empty() || !std::filesystem::exists(path))
+    {
+        sendResponse("550 File not found\r\n");
+        return false;
+    }
+
+    try
+    {
+        auto ftime = std::filesystem::last_write_time(path);
+        auto sctp = std::chrono::time_point_cast<std::chrono::system_clock::duration>(
+            ftime - decltype(ftime)::clock::now() + std::chrono::system_clock::now());
+        std::time_t tt = std::chrono::system_clock::to_time_t(sctp);
+        
+        std::ostringstream oss;
+        oss << std::put_time(std::gmtime(&tt), "%Y%m%d%H%M%S");
+        sendResponse("213 " + oss.str() + "\r\n");
+    }
+    catch (const std::exception &e)
+    {
+        sendResponse("550 Failed to get modification time\r\n");
+    }
+
+    return false;
+}
 
 bool ClientSession::processCommand(const std::string &command)
 {
-    std::cout << "Received: " << command;
+    LOG_DEBUG("Received command: " + command, clientIp_);
 
     ParsedCommand parsed = parser_.parse(command);
 
@@ -775,6 +967,30 @@ bool ClientSession::processCommand(const std::string &command)
         if(parsed.command == "RETR"){
         return handleRETR(parsed.argument);
     }
+    if (parsed.command == "TYPE")
+    {
+        return handleTYPE(parsed.argument);
+    }
+    if (parsed.command == "SYST")
+    {
+        return handleSYST();
+    }
+    if (parsed.command == "RNFR")
+    {
+        return handleRNFR(parsed.argument);
+    }
+    if (parsed.command == "RNTO")
+    {
+        return handleRNTO(parsed.argument);
+    }
+    if (parsed.command == "SIZE")
+    {
+        return handleSIZE(parsed.argument);
+    }
+    if (parsed.command == "MDTM")
+    {
+        return handleMDTM(parsed.argument);
+    }
 
     sendResponse("502 Command not implemented\r\n");
     return false;
@@ -792,12 +1008,12 @@ void ClientSession::receiveCommands()
 
         if (bytesReceived == -1)
         {
-            std::cerr << "Receive failed: " << strerror(errno) << '\n';
+            LOG_ERROR("Receive failed: " + std::string(strerror(errno)), clientIp_);
             break;
         }
         if (bytesReceived == 0)
         {
-            std::cout << "Client disconnected.\n";
+            LOG_INFO("Client disconnected.", clientIp_);
             break;
         }
 
@@ -824,9 +1040,7 @@ void ClientSession::sendResponse(const std::string &response)
                                  response.length() - totalSent, 0);
         if (bytesSent <= 0)
         {
-            std::cerr << "Send failed: "
-                      << strerror(errno)
-                      << '\n';
+            LOG_ERROR("Send failed: " + std::string(strerror(errno)), clientIp_);
             return;
         }
         totalSent += static_cast<size_t>(bytesSent);

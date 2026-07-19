@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class FTPServer
 {
@@ -17,5 +18,5 @@ private:
     bool startListening();
 
     void acceptClients();
-    void handleClient(int clientSocket);
+    void handleClient(int clientSocket, const std::string &clientIp);
 };

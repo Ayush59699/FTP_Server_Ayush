@@ -9,7 +9,7 @@
 class ClientSession
 {
 public:
-    explicit ClientSession(int clientSocket);
+    explicit ClientSession(int clientSocket, const std::string &clientIp = "");
     ~ClientSession();
     void start();
 
@@ -40,6 +40,13 @@ private:
     bool handlePASV();
     bool handleSTOR(const std::string & argument);
     bool handleRETR(const std::string & argument);
+    bool handleTYPE(const std::string & argument);
+    bool handleSYST();
+
+    bool handleRNFR(const std::string &argument);
+    bool handleRNTO(const std::string &argument);
+    bool handleSIZE(const std::string &argument);
+    bool handleMDTM(const std::string &argument);
 
 private:
     int clientSocket_;
@@ -54,4 +61,7 @@ private:
     bool passiveMode_;
 
     Authenticator authenticator_;
+    std::string clientIp_;
+    std::filesystem::path renameSource_;
 };
+

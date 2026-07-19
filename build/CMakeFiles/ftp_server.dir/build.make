@@ -153,6 +153,34 @@ CMakeFiles/ftp_server.dir/src/Authenticator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ftp_server.dir/src/Authenticator.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ayush/root/FTP_SERVER/src/Authenticator.cpp -o CMakeFiles/ftp_server.dir/src/Authenticator.cpp.s
 
+CMakeFiles/ftp_server.dir/src/Logger.cpp.o: CMakeFiles/ftp_server.dir/flags.make
+CMakeFiles/ftp_server.dir/src/Logger.cpp.o: /home/ayush/root/FTP_SERVER/src/Logger.cpp
+CMakeFiles/ftp_server.dir/src/Logger.cpp.o: CMakeFiles/ftp_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ayush/root/FTP_SERVER/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ftp_server.dir/src/Logger.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ftp_server.dir/src/Logger.cpp.o -MF CMakeFiles/ftp_server.dir/src/Logger.cpp.o.d -o CMakeFiles/ftp_server.dir/src/Logger.cpp.o -c /home/ayush/root/FTP_SERVER/src/Logger.cpp
+
+CMakeFiles/ftp_server.dir/src/Logger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ftp_server.dir/src/Logger.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ayush/root/FTP_SERVER/src/Logger.cpp > CMakeFiles/ftp_server.dir/src/Logger.cpp.i
+
+CMakeFiles/ftp_server.dir/src/Logger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ftp_server.dir/src/Logger.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ayush/root/FTP_SERVER/src/Logger.cpp -o CMakeFiles/ftp_server.dir/src/Logger.cpp.s
+
+CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o: CMakeFiles/ftp_server.dir/flags.make
+CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o: /home/ayush/root/FTP_SERVER/src/ConfigManager.cpp
+CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o: CMakeFiles/ftp_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ayush/root/FTP_SERVER/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o -MF CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o.d -o CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o -c /home/ayush/root/FTP_SERVER/src/ConfigManager.cpp
+
+CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ayush/root/FTP_SERVER/src/ConfigManager.cpp > CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.i
+
+CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ayush/root/FTP_SERVER/src/ConfigManager.cpp -o CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.s
+
 # Object files for target ftp_server
 ftp_server_OBJECTS = \
 "CMakeFiles/ftp_server.dir/src/main.cpp.o" \
@@ -160,7 +188,9 @@ ftp_server_OBJECTS = \
 "CMakeFiles/ftp_server.dir/src/ClientSession.cpp.o" \
 "CMakeFiles/ftp_server.dir/src/CommandParser.cpp.o" \
 "CMakeFiles/ftp_server.dir/src/FileManager.cpp.o" \
-"CMakeFiles/ftp_server.dir/src/Authenticator.cpp.o"
+"CMakeFiles/ftp_server.dir/src/Authenticator.cpp.o" \
+"CMakeFiles/ftp_server.dir/src/Logger.cpp.o" \
+"CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o"
 
 # External object files for target ftp_server
 ftp_server_EXTERNAL_OBJECTS =
@@ -171,9 +201,11 @@ ftp_server: CMakeFiles/ftp_server.dir/src/ClientSession.cpp.o
 ftp_server: CMakeFiles/ftp_server.dir/src/CommandParser.cpp.o
 ftp_server: CMakeFiles/ftp_server.dir/src/FileManager.cpp.o
 ftp_server: CMakeFiles/ftp_server.dir/src/Authenticator.cpp.o
+ftp_server: CMakeFiles/ftp_server.dir/src/Logger.cpp.o
+ftp_server: CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o
 ftp_server: CMakeFiles/ftp_server.dir/build.make
 ftp_server: CMakeFiles/ftp_server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ayush/root/FTP_SERVER/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ftp_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ayush/root/FTP_SERVER/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable ftp_server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ftp_server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

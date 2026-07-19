@@ -1,0 +1,463 @@
+2026-07-19 12:04:57 [INFO] [TID: 134987375150912] Socket Created Successfully!!
+2026-07-19 12:04:57 [INFO] [TID: 134987375150912] Bind Successful!!
+2026-07-19 12:04:57 [INFO] [TID: 134987375150912] Listening on port 2121
+2026-07-19 12:04:57 [INFO] [TID: 134987375150912] Waiting for a client.....
+2026-07-19 12:04:59 [INFO] [TID: 134987375150912] Client Connected from IP: 127.0.0.1
+2026-07-19 12:04:59 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:04:59 [INFO] [TID: 134987368101568] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:04:59 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: PASS ayush
+
+2026-07-19 12:04:59 [WARNING] [TID: 134987368101568] [Client: 127.0.0.1] Login incorrect for user: ayush
+2026-07-19 12:04:59 [INFO] [TID: 134987368101568] [Client: 127.0.0.1] Client disconnected.
+2026-07-19 12:05:09 [INFO] [TID: 136686437926720] Socket Created Successfully!!
+2026-07-19 12:05:09 [ERROR] [TID: 136686437926720] Bind failed: Address already in use
+2026-07-19 12:05:11 [INFO] [TID: 134987375150912] Client Connected from IP: 127.0.0.1
+2026-07-19 12:05:11 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:05:11 [INFO] [TID: 134987368101568] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:05:11 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:05:11 [INFO] [TID: 134987368101568] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:05:11 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:05:11 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: EPSV
+
+2026-07-19 12:05:11 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:05:11 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: TYPE A
+
+2026-07-19 12:05:11 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: NLST
+
+2026-07-19 12:05:11 [DEBUG] [TID: 134987368101568] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:05:11 [INFO] [TID: 134987368101568] [Client: 127.0.0.1] Client quit
+2026-07-19 12:05:30 [INFO] [TID: 132201197938496] Socket Created Successfully!!
+2026-07-19 12:05:30 [INFO] [TID: 132201197938496] Bind Successful!!
+2026-07-19 12:05:30 [INFO] [TID: 132201197938496] Listening on port 2121
+2026-07-19 12:05:30 [INFO] [TID: 132201197938496] Waiting for a client.....
+2026-07-19 12:05:32 [INFO] [TID: 132201197938496] Client Connected from IP: 127.0.0.1
+2026-07-19 12:05:32 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:05:32 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:05:32 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:05:32 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:05:32 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:05:32 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:05:32 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: TYPE A
+
+2026-07-19 12:05:32 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: NLST
+
+2026-07-19 12:05:32 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:05:32 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] Client quit
+2026-07-19 12:05:38 [INFO] [TID: 134348144973632] Socket Created Successfully!!
+2026-07-19 12:05:38 [ERROR] [TID: 134348144973632] Bind failed: Address already in use
+2026-07-19 12:05:40 [INFO] [TID: 132201197938496] Client Connected from IP: 127.0.0.1
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: TYPE A
+
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: LIST
+
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] Entered
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] Sent 150
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] Waiting for data connection...
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] Data connection accepted
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] Entries: 6
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 19 11:32 images
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         24 Jul 18 19:49 rajan.txt
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 09:39 audio
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 16 18:56 docs
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 15:12 test
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         50 Jul 18 19:40 ayushhh.txt
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] Closing connection
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] [LIST] Done
+2026-07-19 12:05:40 [DEBUG] [TID: 132201190520512] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:05:40 [INFO] [TID: 132201190520512] [Client: 127.0.0.1] Client quit
+2026-07-19 12:06:07 [INFO] [TID: 124687100462912] Socket Created Successfully!!
+2026-07-19 12:06:07 [INFO] [TID: 124687100462912] Bind Successful!!
+2026-07-19 12:06:07 [INFO] [TID: 124687100462912] Listening on port 2121
+2026-07-19 12:06:07 [INFO] [TID: 124687100462912] Waiting for a client.....
+2026-07-19 12:06:37 [INFO] [TID: 139356720019264] Socket Created Successfully!!
+2026-07-19 12:06:37 [INFO] [TID: 139356720019264] Bind Successful!!
+2026-07-19 12:06:37 [INFO] [TID: 139356720019264] Listening on port 2121
+2026-07-19 12:06:37 [INFO] [TID: 139356720019264] Waiting for a client.....
+2026-07-19 12:06:38 [INFO] [TID: 139356720019264] Client Connected from IP: 172.18.208.1
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: USER ayush
+
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] Username: ayush
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASS 1234
+
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] Login successful for user: ayush
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: FEAT
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: TYPE I
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PWD
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: SYST
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 6
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 19 11:32 images
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         24 Jul 18 19:49 rajan.txt
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 09:39 audio
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 16 18:56 docs
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 15:12 test
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         50 Jul 18 19:40 ayushhh.txt
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /audio/
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 0
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:38 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:06:38 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /docs/
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 1
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         33 Jul 16 18:56 file1.txt
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /images/
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 2
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group          9 Jul 19 11:32 abhay.txt
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         19 Jul 16 19:29 img1.txt
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /test/
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 0
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:39 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:06:39 [INFO] [TID: 139356720019264] Client Connected from IP: 127.0.0.1
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:06:39 [INFO] [TID: 139356704597696] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:06:39 [INFO] [TID: 139356704597696] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: TYPE I
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: STOR users.txt
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:06:39 [INFO] [TID: 139356704597696] [Client: 127.0.0.1] Client quit
+2026-07-19 12:06:39 [INFO] [TID: 139356720019264] Client Connected from IP: 127.0.0.1
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:06:39 [INFO] [TID: 139356704597696] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:06:39 [INFO] [TID: 139356704597696] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:06:39 [DEBUG] [TID: 139356704597696] [Client: 127.0.0.1] Received command: RNFR /users.txt.tmp
+
+2026-07-19 12:06:39 [WARNING] [TID: 139356704597696] [Client: 127.0.0.1] RNFR failed: path empty or does not exist: /users.txt.tmp
+2026-07-19 12:06:39 [INFO] [TID: 139356704597696] [Client: 127.0.0.1] Client disconnected.
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 7
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 19 11:32 images
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         24 Jul 18 19:49 rajan.txt
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 09:39 audio
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 16 18:56 docs
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 15:12 test
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         50 Jul 18 19:40 ayushhh.txt
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         35 Jul 19 12:06 users.txt
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /audio/
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 0
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /docs/
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 1
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         33 Jul 16 18:56 file1.txt
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: NOOP
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: CWD /images/
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: PASV
+
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] Received command: LIST -a
+
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entered
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Sent 150
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Waiting for data connection...
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Data connection accepted
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Entries: 2
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group          9 Jul 19 11:32 abhay.txt
+2026-07-19 12:06:45 [DEBUG] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] -rw-r--r-- 1 owner group         19 Jul 16 19:29 img1.txt
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Closing connection
+2026-07-19 12:06:45 [INFO] [TID: 139356712990400] [Client: 172.18.208.1] [LIST] Done
+2026-07-19 12:07:07 [INFO] [TID: 131007259526976] Socket Created Successfully!!
+2026-07-19 12:07:07 [INFO] [TID: 131007259526976] Bind Successful!!
+2026-07-19 12:07:07 [INFO] [TID: 131007259526976] Listening on port 2121
+2026-07-19 12:07:07 [INFO] [TID: 131007259526976] Waiting for a client.....
+2026-07-19 12:07:09 [INFO] [TID: 131007259526976] Client Connected from IP: 127.0.0.1
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: TYPE I
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: STOR users.txt
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Client quit
+2026-07-19 12:07:09 [INFO] [TID: 131007259526976] Client Connected from IP: 127.0.0.1
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: RNFR /users.txt
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] RNFR success: stored source /home/ayush/root/FTP_SERVER/ftp_root/users.txt
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: RNTO /users.txt.renamed
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] RNTO success: renamed /home/ayush/root/FTP_SERVER/ftp_root/users.txt to /home/ayush/root/FTP_SERVER/ftp_root/users.txt.renamed
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: TYPE A
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: LIST
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Entered
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Sent 150
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Waiting for data connection...
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Data connection accepted
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Entries: 7
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 19 11:32 images
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         24 Jul 18 19:49 rajan.txt
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         35 Jul 19 12:07 users.txt.renamed
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 09:39 audio
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 16 18:56 docs
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 15:12 test
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         50 Jul 18 19:40 ayushhh.txt
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Closing connection
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Done
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Client quit
+2026-07-19 12:07:09 [INFO] [TID: 131007259526976] Client Connected from IP: 127.0.0.1
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: TYPE A
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: LIST
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Entered
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Sent 150
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Waiting for data connection...
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Data connection accepted
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Entries: 7
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 19 11:32 images
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         24 Jul 18 19:49 rajan.txt
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         35 Jul 19 12:07 users.txt.renamed
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 09:39 audio
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 16 18:56 docs
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 15:12 test
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         50 Jul 18 19:40 ayushhh.txt
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Closing connection
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Done
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Client quit
+2026-07-19 12:07:09 [INFO] [TID: 131007259526976] Client Connected from IP: 127.0.0.1
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: DELE /users.txt.renamed
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: TYPE A
+
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: LIST
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Entered
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Sent 150
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Waiting for data connection...
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Data connection accepted
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Entries: 6
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 19 11:32 images
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         24 Jul 18 19:49 rajan.txt
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 09:39 audio
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 16 18:56 docs
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 15:12 test
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         50 Jul 18 19:40 ayushhh.txt
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Closing connection
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] [LIST] Done
+2026-07-19 12:07:09 [DEBUG] [TID: 131007252526784] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:07:09 [INFO] [TID: 131007252526784] [Client: 127.0.0.1] Client quit
+2026-07-19 12:11:06 [INFO] [TID: 126445424076608] Socket Created Successfully!!
+2026-07-19 12:11:06 [INFO] [TID: 126445424076608] Bind Successful!!
+2026-07-19 12:11:06 [INFO] [TID: 126445424076608] Listening on port 2121
+2026-07-19 12:11:06 [INFO] [TID: 126445424076608] Waiting for a client.....
+2026-07-19 12:11:08 [INFO] [TID: 126445424076608] Client Connected from IP: 127.0.0.1
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: USER ayush
+
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] Username: ayush
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: PASS 1234
+
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] Login successful for user: ayush
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: PWD
+
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: SIZE /rajan.txt
+
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: MDTM /rajan.txt
+
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: PASV
+
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: TYPE A
+
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: LIST
+
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] Entered
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] Sent 150
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] Waiting for data connection...
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] Data connection accepted
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] Entries: 6
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 19 11:32 images
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         24 Jul 18 19:49 rajan.txt
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 09:39 audio
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 16 18:56 docs
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] drwxr-xr-x 1 owner group          0 Jul 17 15:12 test
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] -rw-r--r-- 1 owner group         50 Jul 18 19:40 ayushhh.txt
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] Closing connection
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] [LIST] Done
+2026-07-19 12:11:08 [DEBUG] [TID: 126445416347328] [Client: 127.0.0.1] Received command: QUIT
+
+2026-07-19 12:11:08 [INFO] [TID: 126445416347328] [Client: 127.0.0.1] Client quit

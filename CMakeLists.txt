@@ -14,6 +14,8 @@ add_executable(ftp_server
     src/CommandParser.cpp
     src/FileManager.cpp
     src/Authenticator.cpp
+    src/Logger.cpp
+    src/ConfigManager.cpp
 )
 
 target_link_libraries(ftp_server pthread)

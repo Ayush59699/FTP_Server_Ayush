@@ -1,4 +1,7 @@
 #include "FileManager.h"
+#include <iomanip>
+#include <sstream>
+#include <chrono>
 
 FileManager::FileManager(const std::filesystem::path &rootDirectory)
     : rootDirectory_(rootDirectory)
@@ -51,6 +54,9 @@ bool FileManager::deleteFile(const std::filesystem::path &path) const
 {
     return std::filesystem::remove(path);
 }
+
+
+// unix format
 std::vector<std::string> FileManager::listDirectory(
     const std::filesystem::path &path) const
 {
@@ -58,16 +64,43 @@ std::vector<std::string> FileManager::listDirectory(
 
     for (const auto &entry : std::filesystem::directory_iterator(path))
     {
-        std::string line;
+        std::string filename = entry.path().filename().string();
+        
+        // Hide temporary upload files (*.tmp, *.part)
+        if (filename.size() >= 4 && filename.compare(filename.size() - 4, 4, ".tmp") == 0) {
+            continue;
+        }
+        if (filename.size() >= 5 && filename.compare(filename.size() - 5, 5, ".part") == 0) {
+            continue;
+        }
+
+        std::ostringstream oss;
 
         if (entry.is_directory())
-            line = "[DIR] ";
+            oss << "drwxr-xr-x ";
         else
-            line = "[FILE] ";
+            oss << "-rw-r--r-- ";
 
-        line += entry.path().filename().string();
+        oss << "1 owner group ";
 
-        result.push_back(line);
+        if (entry.is_regular_file())
+            oss << std::setw(10) << entry.file_size() << " ";
+        else
+            oss << std::setw(10) << 0 << " ";
+
+        auto ftime = entry.last_write_time();
+
+        auto sctp = std::chrono::time_point_cast<std::chrono::system_clock::duration>(
+            ftime - decltype(ftime)::clock::now()
+            + std::chrono::system_clock::now());
+
+        std::time_t tt = std::chrono::system_clock::to_time_t(sctp);
+
+        oss << std::put_time(std::localtime(&tt), "%b %d %H:%M") << " ";
+
+        oss << filename;
+
+        result.push_back(oss.str());
     }
 
     return result;

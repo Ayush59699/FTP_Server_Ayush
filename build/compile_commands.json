@@ -34,5 +34,17 @@
   "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/Authenticator.cpp.o -c /home/ayush/root/FTP_SERVER/src/Authenticator.cpp",
   "file": "/home/ayush/root/FTP_SERVER/src/Authenticator.cpp",
   "output": "CMakeFiles/ftp_server.dir/src/Authenticator.cpp.o"
+},
+{
+  "directory": "/home/ayush/root/FTP_SERVER/build",
+  "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/Logger.cpp.o -c /home/ayush/root/FTP_SERVER/src/Logger.cpp",
+  "file": "/home/ayush/root/FTP_SERVER/src/Logger.cpp",
+  "output": "CMakeFiles/ftp_server.dir/src/Logger.cpp.o"
+},
+{
+  "directory": "/home/ayush/root/FTP_SERVER/build",
+  "command": "/usr/bin/g++  -I/home/ayush/root/FTP_SERVER/include -g -std=gnu++20 -o CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o -c /home/ayush/root/FTP_SERVER/src/ConfigManager.cpp",
+  "file": "/home/ayush/root/FTP_SERVER/src/ConfigManager.cpp",
+  "output": "CMakeFiles/ftp_server.dir/src/ConfigManager.cpp.o"
 }
 ]
